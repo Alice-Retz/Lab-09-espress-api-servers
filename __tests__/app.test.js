@@ -8,10 +8,18 @@ describe('Lab 09 express api servers', () => {
     return setup(pool);
   });
 
-  it('Gets a villager from an api', () => {
+  it('Saves a villager from an api', () => {
     return request(app)
-      .get('??????')
-      .then((res) => {});
+      .post('/api/v1/villagers')
+      .send({ id: 341 })
+      .then((res) => {
+        expect(res.body).toEqual({
+          id: '1',
+          name: 'Merengue',
+          species: 'Rhino',
+          personality: 'Normal',
+        });
+      });
   });
 
   afterAll(() => {
