@@ -10,7 +10,7 @@ describe('Lab 09 express api servers', () => {
 
   it('Gets a villager from an api', () => {
     return request(app)
-      .get('api/random/')
+      .get('??????')
       .then((res) => {});
   });
 
