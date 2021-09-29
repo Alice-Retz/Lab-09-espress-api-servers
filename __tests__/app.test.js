@@ -23,13 +23,26 @@ describe('Lab 09 express api servers', () => {
       });
   });
 
-  // it('returns all villagers in the database', async () => {
-  //   return request(app)
-  //     .get('/api/v1/villagers')
-  //     .then((res) => {
-  //       expect(res.body).toEqual([Villager]);
-  //     });
-  // });
+  it('returns all villagers in the database', async () => {
+    return request(app)
+      .get('/api/v1/villagers')
+      .then((res) => {
+        expect(res.body).toEqual([
+          {
+            id: '1',
+            name: 'Peggy',
+            personality: 'Peppy',
+            species: 'Pig',
+          },
+          {
+            id: '2',
+            name: 'Antonio',
+            personality: 'Jock',
+            species: 'Anteater',
+          },
+        ]);
+      });
+  });
 
   afterAll(() => {
     pool.end();
