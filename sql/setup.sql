@@ -5,9 +5,7 @@ CREATE TABLE villagers (
     villager_name TEXT NOT NULL,
     species TEXT NOT NULL,
     personality TEXT NOT NULL
-)
+);
 
 INSERT INTO villagers (villager_name, species, personality) 
-    VALUES
-        ('Peggy', 'Pig', 'Peppy')
-        ('Antonio', 'Anteater', 'Jock')
+    VALUES ('Peggy', 'Pig', 'Peppy'), ('Antonio', 'Anteater', 'Jock');
