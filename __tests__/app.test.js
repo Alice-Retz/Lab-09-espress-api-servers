@@ -57,6 +57,24 @@ describe('Lab 09 express api servers', () => {
       });
   });
 
+  it('should update an order by id', async () => {
+    const villager = await Villager.insert({
+      name: 'Kidd',
+      species: 'Goat',
+      personality: 'Lazy',
+    });
+    return request(app)
+      .put(`/api/v1/villagers/${villager.id}`)
+      .send({ personality: 'Smug' })
+      .then((res) => {
+        expect(res.body).toEqual({
+          name: 'Kidd',
+          species: 'Goat',
+          personality: 'Smug',
+        });
+      });
+  });
+
   afterAll(() => {
     pool.end();
   });
