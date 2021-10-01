@@ -44,6 +44,19 @@ describe('Lab 09 express api servers', () => {
       });
   });
 
+  it('should return a villager by id', async () => {
+    const villager = await Villager.insert({
+      name: 'Tex',
+      species: 'Penguin',
+      personality: 'Smug',
+    });
+    return request(app)
+      .get(`/api/v1/villagers/${villager.id}`)
+      .then((res) => {
+        expect(res.body).toEqual(villager);
+      });
+  });
+
   afterAll(() => {
     pool.end();
   });
