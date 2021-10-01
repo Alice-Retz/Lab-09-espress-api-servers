@@ -57,7 +57,7 @@ describe('Lab 09 express api servers', () => {
       });
   });
 
-  it('should update an order by id', async () => {
+  xit('should update an order by id', async () => {
     return request(app)
       .patch('/api/v1/villagers/1')
       .send({
@@ -73,6 +73,19 @@ describe('Lab 09 express api servers', () => {
           species: 'Pig',
           personality: 'Smug',
         });
+      });
+  });
+
+  it('should delete a villager', async () => {
+    const villager = await Villager.insert({
+      name: 'Pinky',
+      species: 'Bear',
+      personality: 'Peppy',
+    });
+    return request(app)
+      .delete(`/api/v1/villagers/${villager.id}`)
+      .then((res) => {
+        expect(res.body).toEqual({});
       });
   });
 
