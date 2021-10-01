@@ -76,7 +76,7 @@ describe('Lab 09 express api servers', () => {
       });
   });
 
-  it('should delete a villager', async () => {
+  xit('should delete a villager', async () => {
     const villager = await Villager.insert({
       name: 'Pinky',
       species: 'Bear',
