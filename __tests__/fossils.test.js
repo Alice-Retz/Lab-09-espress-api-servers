@@ -8,14 +8,15 @@ describe('Lab 09 express api servers', () => {
     return setup(pool);
   });
 
-  it('Saves a fossil from an api to our database', () => {
+  it('Saves a fossil from an api to our database', async () => {
     return request(app)
       .post('/api/v1/fossils')
-      .send({ name: 'dunkleosteus' })
+      .send({ id: 'dunkleosteus' })
       .then((res) => {
         expect(res.body).toEqual({
           id: '3',
           name: 'dunkleosteus',
+          collected: false,
         });
       });
   });
