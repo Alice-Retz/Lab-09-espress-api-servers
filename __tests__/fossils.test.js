@@ -2,6 +2,7 @@ import pool from '../lib/utils/pool.js';
 import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
+import Fossil from '../lib/models/fossilModels.js';
 
 describe('Lab 09 express api servers', () => {
   beforeEach(() => {
@@ -52,11 +53,7 @@ describe('Lab 09 express api servers', () => {
       });
   });
 
-  afterAll(() => {
-    pool.end();
-  });
-
-  it('should update an order by id', async () => {
+  xit('should update an order by id', async () => {
     return request(app)
       .patch('/api/v1/fossils/1')
       .send({
@@ -71,5 +68,22 @@ describe('Lab 09 express api servers', () => {
           collected: false,
         });
       });
+  });
+
+  it('should delete a fossil', async () => {
+    const fossil = await Fossil.insert({
+      name: 'Pinky',
+      species: 'Bear',
+      personality: 'Peppy',
+    });
+    return request(app)
+      .delete(`/api/v1/fossils/${fossil.id}`)
+      .then((res) => {
+        expect(res.body).toEqual({});
+      });
+  });
+
+  afterAll(() => {
+    pool.end();
   });
 });
