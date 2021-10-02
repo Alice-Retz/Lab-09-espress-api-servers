@@ -21,7 +21,7 @@ describe('Lab 09 express api servers', () => {
       });
   });
 
-  it('returns all fossils in the database', async () => {
+  xit('returns all fossils in the database', async () => {
     return request(app)
       .get('/api/v1/fossils')
       .then((res) => {
@@ -37,6 +37,18 @@ describe('Lab 09 express api servers', () => {
             collected: true,
           },
         ]);
+      });
+  });
+
+  it('should return a fossil by id', async () => {
+    return request(app)
+      .get('/api/v1/fossils/1')
+      .then((res) => {
+        expect(res.body).toEqual({
+          id: '1',
+          name: 'amber',
+          collected: true,
+        });
       });
   });
 
