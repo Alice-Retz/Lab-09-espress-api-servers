@@ -40,7 +40,7 @@ describe('Lab 09 express api servers', () => {
       });
   });
 
-  it('should return a fossil by id', async () => {
+  xit('should return a fossil by id', async () => {
     return request(app)
       .get('/api/v1/fossils/1')
       .then((res) => {
@@ -54,5 +54,22 @@ describe('Lab 09 express api servers', () => {
 
   afterAll(() => {
     pool.end();
+  });
+
+  it('should update an order by id', async () => {
+    return request(app)
+      .patch('/api/v1/fossils/1')
+      .send({
+        id: '1',
+        name: 'amber',
+        collected: false,
+      })
+      .then((res) => {
+        expect(res.body).toEqual({
+          id: '1',
+          name: 'amber',
+          collected: false,
+        });
+      });
   });
 });
