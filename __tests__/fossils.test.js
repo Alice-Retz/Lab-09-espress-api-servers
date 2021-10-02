@@ -29,12 +29,12 @@ describe('Lab 09 express api servers', () => {
           {
             id: '1',
             name: 'amber',
-            collected: 'true',
+            collected: true,
           },
           {
             id: '2',
             name: 'ammonite',
-            collected: 'true',
+            collected: true,
           },
         ]);
       });
