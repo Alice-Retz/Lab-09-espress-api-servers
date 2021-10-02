@@ -8,7 +8,7 @@ describe('Lab 09 express api servers', () => {
     return setup(pool);
   });
 
-  it('Saves a fossil from an api to our database', async () => {
+  xit('Saves a fossil from an api to our database', async () => {
     return request(app)
       .post('/api/v1/fossils')
       .send({ id: 'dunkleosteus' })
@@ -18,6 +18,25 @@ describe('Lab 09 express api servers', () => {
           name: 'dunkleosteus',
           collected: false,
         });
+      });
+  });
+
+  it('returns all fossils in the database', async () => {
+    return request(app)
+      .get('/api/v1/fossils')
+      .then((res) => {
+        expect(res.body).toEqual([
+          {
+            id: '1',
+            name: 'amber',
+            collected: 'true',
+          },
+          {
+            id: '2',
+            name: 'ammonite',
+            collected: 'true',
+          },
+        ]);
       });
   });
 
