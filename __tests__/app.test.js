@@ -9,7 +9,7 @@ describe('Lab 09 express api servers', () => {
     return setup(pool);
   });
 
-  xit('Saves a villager from an api to our database', () => {
+  it('Saves a villager from an api to our database', () => {
     return request(app)
       .post('/api/v1/villagers')
       .send({ id: 341 })
@@ -23,7 +23,7 @@ describe('Lab 09 express api servers', () => {
       });
   });
 
-  xit('returns all villagers in the database', async () => {
+  it('returns all villagers in the database', async () => {
     return request(app)
       .get('/api/v1/villagers')
       .then((res) => {
@@ -44,7 +44,7 @@ describe('Lab 09 express api servers', () => {
       });
   });
 
-  xit('should return a villager by id', async () => {
+  it('should return a villager by id', async () => {
     const villager = await Villager.insert({
       name: 'Tex',
       species: 'Penguin',
@@ -57,7 +57,7 @@ describe('Lab 09 express api servers', () => {
       });
   });
 
-  xit('should update an order by id', async () => {
+  it('should update an order by id', async () => {
     return request(app)
       .patch('/api/v1/villagers/1')
       .send({
@@ -76,7 +76,7 @@ describe('Lab 09 express api servers', () => {
       });
   });
 
-  xit('should delete a villager', async () => {
+  it('should delete a villager', async () => {
     const villager = await Villager.insert({
       name: 'Pinky',
       species: 'Bear',
